@@ -22,7 +22,7 @@ public class EmployeeRegister {
 	private String lastName;
 
 	@Column(name = "email_id")
-	private String emailId;
+	private String email;
 
 	@Column(name = "gender")
 	private String gender;
@@ -30,13 +30,27 @@ public class EmployeeRegister {
 	@Column(name = "address")
 	private String address;
 
-	public EmployeeRegister(String emailId, String firstName, String lastName, String gender, String address) {
+	@Column(name = "password")
+	private String password;
+
+	public EmployeeRegister() {
+		
+	}
+	public EmployeeRegister(String email, String firstName, String lastName, String gender, String address) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
 		this.address = address;
-		this.emailId = emailId;
+		this.email = email;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -55,6 +69,14 @@ public class EmployeeRegister {
 		this.lastName = lastName;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getGender() {
 		return gender;
 	}
@@ -71,12 +93,18 @@ public class EmployeeRegister {
 		this.address = address;
 	}
 
-	public String getEmailId() {
-		return emailId;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	@Override
+	public String toString() {
+		return "EmployeeRegister [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", gender=" + gender + ", address=" + address + ", password=" + password + "]";
 	}
 
+	
 }

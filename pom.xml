@@ -36,6 +36,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.20</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-configuration-processor -->
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20180130</version>
+</dependency>
      
 	</dependencies>
 
