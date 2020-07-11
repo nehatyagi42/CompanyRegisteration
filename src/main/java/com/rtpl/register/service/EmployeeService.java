@@ -28,7 +28,7 @@ public class EmployeeService {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
-	public EmployeeRegister saveEmployee(EmployeeRegister employee) {
+	public EmployeeRegister upsertEmployee(EmployeeRegister employee) {
 		return employeeRepository.save(employee);
 	}
 
@@ -44,17 +44,6 @@ public class EmployeeService {
 		return employeeRepository.findById(id).orElse(null);
 	}
 
-	public EmployeeRegister UpdateEmployee(EmployeeRegister employee) {
-
-		EmployeeRegister existingEmployee = employeeRepository.findById(employee.getId()).orElse(null);
-		existingEmployee.setAddress(employee.getAddress());
-		existingEmployee.setEmail(employee.getEmail());
-		existingEmployee.setFirstName(employee.getFirstName());
-		existingEmployee.setGender(employee.getGender());
-		existingEmployee.setLastName(employee.getLastName());
-		return employeeRepository.save(existingEmployee);
-
-	}
 
 	public String deleteEmployee(int id) {
 		employeeRepository.deleteById(id);

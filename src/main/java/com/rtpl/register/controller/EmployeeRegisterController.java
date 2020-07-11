@@ -46,7 +46,7 @@ public class EmployeeRegisterController {
 
 	@PostMapping(path = "/employee", produces = "applicaion/json")
 	public ResponseEntity<String> addEmployee(@RequestBody EmployeeRegister employeeRegobj) {
-		employeeService.saveEmployee(employeeRegobj);
+		employeeService.upsertEmployee(employeeRegobj);
 
 		JSONObject entity = new JSONObject();
 		entity.put("message", "insert successful");
@@ -61,7 +61,7 @@ public class EmployeeRegisterController {
 
 	@PutMapping("/employee")
 	public ResponseEntity<String> updateEmployee(@RequestBody EmployeeRegister employeeupdateobj) {
-		employeeService.UpdateEmployee(employeeupdateobj);
+		employeeService.upsertEmployee(employeeupdateobj);
 		JSONObject entity = new JSONObject();
 		entity.put("message", "Update successful");
 
@@ -92,10 +92,11 @@ public class EmployeeRegisterController {
 			}
 		} catch (Exception e) {
 
-			if (e.getMessage().equals(RegisterConstants.USER_NOT_FOUND)) {
-				entity.put("message", RegisterConstants.USER_NOT_FOUND);
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(entity.toString());
-			}
+			
+			 if (e.getMessage().equals(RegisterConstants.USER_NOT_FOUND)) {
+			  entity.put("message", RegisterConstants.USER_NOT_FOUND); return
+			  ResponseEntity.status(HttpStatus.NOT_FOUND).body(entity.toString()); }
+			 
 		}
 
 		entity.put("message", "login successful");
